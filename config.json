@@ -1,0 +1,40 @@
+{
+  "import_settings": {
+    "csv_file_path": "C:\\Users\\your_name\\Desktop\\somewhere\\example_sample_2025_07.csv",
+    "table_name": "your_mysql_table_name",
+    "csv_encoding": "utf-8", -- 日本語の場合、cp932
+    "skip_header": true, -- 1行目をヘッダーとしてスキップするか？
+    "pre_import_action": {
+        "type": "delete_by_month",
+        "filename_month_parts_index": [2, 3],
+        "month_column_in_db": "clock_date"
+    },
+    "data_columns": [
+      {
+        "csv_header_name": "社員番号",
+        "db_column_name": "employee_id",
+        "data_type": "int",
+        "handle_dash": "to_zero"
+      },
+      {
+        "csv_header_name": "苗字",
+        "db_column_name": "last_name",
+        "data_type": "string",
+        "handle_dash": "to_empty_string"
+      },
+      {
+        "csv_header_name": "名前",
+        "db_column_name": "first_name",
+        "data_type": "string",
+        "handle_dash": "to_empty_string"
+      },
+      {
+        "csv_header_name": "誕生日",
+        "db_column_name": "date_of_birth",
+        "data_type": "date",
+        "handle_dash": "to_null"
+      }
+    ],
+    "generated_columns": []
+  }
+}
